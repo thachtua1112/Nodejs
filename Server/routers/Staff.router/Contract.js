@@ -1,7 +1,7 @@
 const express = require("express");
 //const { getT_Hre } = require("../../../controllers/Staff/Contract/Contract");
-const { Joint_Hre_Pos } = require("../../../controllers/Staff/Details/Positions");
-const { getT_Hre } = require("../../../controllers/Staff/Contract/Contract");
+const { Joint_Hre_Pos } = require("../../controllers/Staff/Details/Positions");
+const { getT_Hre } = require("../../controllers/Staff/Contract/Contract");
 const ContractRouter = express.Router();
 
 

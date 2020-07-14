@@ -1,4 +1,4 @@
-const Secret = process.env.SECRET;
+//const Secret = process.env.SECRET;
 
 module.exports.verifyToken=function (req, res, next)
 {

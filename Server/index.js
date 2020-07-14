@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 //const expressValidator = require("./validators/validators");
-const routes = require("./routers/routers");
 const mongoose = require("mongoose");
 
 const session = require("express-session");
@@ -14,7 +13,8 @@ const PORT = process.env.PORT || 8797;
 const db = mongoose.connection;
 const {verifyToken} = require('./controllers/verifyToken');
 const loginRouter = require("./routers/Login.router");
-const ContractRouter = require("./routers/Staff.router/Contract.router/Contract");
+const RouterStaff = require("./routers/RouterStaff");
+const RouterUser = require("./routers/RouterUser");
 
 dotenv.config();
 
@@ -73,9 +73,9 @@ app.use('/',function(req, res, next){
   next();
 }
 )
-app.use("/user",verifyToken,routes);
-app.use("/",loginRouter);
-app.use("/staff",ContractRouter);
+app.use("/staff",RouterStaff);
+app.use("/user",loginRouter);
+app.use("/user",RouterUser)
 app.listen(PORT, () => {
   console.log("Server started on http://localhost:" + PORT);
 });

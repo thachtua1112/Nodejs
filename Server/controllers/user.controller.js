@@ -82,6 +82,7 @@ exports.login = function (req, res) {
     });
   });
 };
+
 exports.token = function(req, res) 
 {
   const refreshToken = req.body.token
@@ -107,25 +108,4 @@ exports.getInfor=function(req,res)
       payload: decoded.payload,
       Signature:decoded.signature
     })
-}
-/*
-exports.logout = function (req, res) {
-  if (req.jwt) {
-    // delete session object
-    req.jwt.destroy(function (err) {
-      if (err) {
-        return res.json({ err });
-      } else {
-        return res.json({ logout: "Success" });
-      }
-    });
-  }
-};
-*/
-
-exports.logout= function(req,res)
-{
- var decoded = jwt.decode(req.token, {complete: true})
-    
-      delete decoded.payload;  
 }
