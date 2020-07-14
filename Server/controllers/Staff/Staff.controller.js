@@ -1,4 +1,3 @@
-const People = require('../../models/people.model');
 const User   = require('../../models/user.model');
 const Hre = require('../../models/Hre_Profile')
 const Workhistory = require ('../../models/Hre_WorkHistory')
@@ -7,15 +6,13 @@ const Cat_Position = require('../../models/Cat_Position')
 const OrgUnit = require('../../models/Cat_OrgUnit')
 const StructureSchema = require('../../models/Cat_OrgStructure')
 const Cat_ContractType = require('../../models/Cat_ContractType')
+const T_Hre = require('../../models/T_Hre_Profile')
+
+
 module.exports.getAll= async function(req,res){
     var pu = await User.find();// không có async await thêm .then(function(user) thay thế co var user
-        res.json(pu);      
+        res.json(pu);
 };
-module.exports.getAllpeo= async function(req,res){
-   var pu = await People.find();// không có async await thêm .then(function(user) thay thế co var user
-        res.json(pu);      
-};
-
 //chi tiết nhân viên
 
 module.exports.getHre= async function(req,res){
@@ -69,6 +66,7 @@ module.exports.getHre= async function(req,res){
        return res.sendStatus(404);
     });       
  };
+ 
  module.exports.Cat_Position= async function(req,res){
     await Cat_Position.find((err, user) => {
         if(err)
@@ -85,6 +83,7 @@ module.exports.getHre= async function(req,res){
        return res.sendStatus(404);
     });       
  };
+ 
  module.exports.OrgUnit= async function(req,res){
    await OrgUnit.find((err, user) => {
        if(err)
@@ -136,17 +135,11 @@ module.exports.Cat_ContractType= async function(req,res){
    });       
 };
 /*
-module.exports.Cat_ContractType= async function(req,res){
+module.exports.getT_Hre= async function(req,res){
     const newu=
-        {ID:"e355c683-a461-4fbe-b601-2001818de4ae",
-        ProfileName:"HỒ THỊ THỦY CHUNG",
-        CodeEmp:"8002280",
-        CodeTax:"8012323754",
-        CodeAttendance:"8002280",
-        StatusSyn:"E_STOP",
-    
+   {ID:"e355c683-a461-4fbe-b601-2001818de4ae"
     }
-    Cat_ContractType.create(newu, function (err, res) {
+    T_Hre.create(newu, function (err, res) {
         if (err) return handleError(err);
         console.log("create!");
       });

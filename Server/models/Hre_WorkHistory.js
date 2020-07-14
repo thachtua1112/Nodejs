@@ -4,7 +4,7 @@ var HreWorkSchema= new mongoose.Schema({
     ID : String,
     Code : String,
     ProfileID : String,
-    DateEffective : String,
+    DateEffective : Date,
     OrganizationStructureID : String,
     PositionID : String,
     CostCentreID : String,
@@ -29,6 +29,6 @@ var HreWorkSchema= new mongoose.Schema({
     OrgStructureOldID : String,
     CompanyID : String,
     WorkPlaceID : String,
-    SortID : String
+    SortID : Number
 })
 module.exports = mongoose.model( "Hre_WorkHistory" , HreWorkSchema);

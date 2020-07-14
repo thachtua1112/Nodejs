@@ -17,6 +17,6 @@ E_DIVISION_CODE : String,
 E_DEPARTMENT_CODE : String,
 E_TEAM_CODE : String,
 E_SECTION_CODE : String,
-SortID : String
+SortID : Number
 })
 module.exports = mongoose.model( "Cat_OrgUnit" , OrgUnitSchema);

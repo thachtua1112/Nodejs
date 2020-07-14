@@ -32,7 +32,6 @@ router.post("/register", UserValidator, register);
 //router.post("/login", requiresLogout, login);
 router.delete("/logout",logout);
 router.get("/getuser", all.getAll);
-router.get("/getpeo", all.getAllpeo);
 router.get("/getinfor", getInfor );
 
 

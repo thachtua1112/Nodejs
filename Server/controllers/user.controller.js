@@ -1,68 +1,51 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
-//const session = require('express-session');
 jwt    = require('jsonwebtoken');
 const express = require('express');
-/*
-const { token } = require("morgan");
-const { json } = require("body-parser");
-*/
-//jwtr
-
-
 app = express();
 require('dotenv').config();
-//app.set('Secret', process.env.SECRET);
-//const Secret = process.env.SECRET;
+
 
 exports.register = function (req, res, next) {
- 
-  User.findOne({ email: req.body.email }, (err, user) => {
+  User.findOne({ username: req.body.username }, (err, user) => {
     if (user == null) {
       //Kiểm tra xem email đã được sử dụng chưa
-      bcrypt.hash(req.body.password, 10, function (err, hash) {
-        //Mã hóa mật khẩu trước khi lưu vào db
-        if (err) {
-          //console.log("errrrrr");
-          return next(err);
-        }
-        
         if(req.body.password===req.body.password_confirm)
           {
+            bcrypt.hash(req.body.password,10,(err,hash)=>{
+              if (err)
+              {
+               return res.sendStatus(403).json({err:"effort hash passwork does not success"})
+              } 
               const newUser = {
-              email: req.body.email,
+              role:req.body.role,
               username: req.body.username,
               password: hash,
               password_confirm: hash
               };
-              User.create(newUser, function (err, res) {
-                if (err) return handleError(err);
+              User.create(newUser, function (err, user) {
+                if (err) return res.sendStatus(403);
+                if(user)
+                {                
                 console.log("create!");
+                return res.json({mss:"create"})
+                }
+                return res.sendStatus(404).json({err:"can not create new user"});
               });
-              res.send("create!");
+            })
+            return;
           }
-          res.status(500).json({ err: "confirm password is wrong" });
-          
-        
-      //  res.status(403).json({ err: "Password must be written " });
-
-        // const user = new User(req.body);
-        // user.role = ["customer"]; //sau khi register thì role auto là customer
-        // user.password = hash;
-        // user.password_confirm = hash;
-        // user.save((err, result) => {
-        //   if (err) {
-        //     console.log("ERR");
-        //     return res.json({ err });
-        //   }
-        //   res.json({ user: result });
-        // });
-      });
+          else
+          {
+            return res.status(500).json({ err: "confirm password is wrong" });
+          }
+  
     } else {
-      res.json({ err: "Email has been used" });
+      return res.json({ err: "Username has been used" });
     }
   });
 };
+
 let refreshTokens = [];
 exports.login = function (req, res) {
   console.log(req.body.username);

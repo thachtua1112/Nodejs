@@ -4,15 +4,15 @@ var StopWorkSchema= new mongoose.Schema({
     ID : String,
     StopWorkType : String,
     ResignReasonID : String,
-    DateStop : String,
+    DateStop : Date,
     Status : String,
     ProfileID : String,
     JobTitleID : String,
     PositionID : String,
     OrgStructureID : String,
     StoredDocuments : String,
-    DateQuitSign : String,
+    DateQuitSign : Date,
     ContractTypeID : String,
-    SortID : String
+    SortID : Number
 })
 module.exports = mongoose.model( "Hre_StopWorking" , StopWorkSchema);

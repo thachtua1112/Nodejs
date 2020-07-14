@@ -1,6 +1,7 @@
 const T_Hre = require('../../../models/T_Hre_Profile')
-
+//danh sách hợp đồng
 module.exports.getT_Hre= async function(req,res){
+    
     await T_Hre.find((err, user) => {
         if(err)
         {
@@ -16,3 +17,5 @@ module.exports.getT_Hre= async function(req,res){
        return res.sendStatus(404);
     });
  };
+
+ //danh sách nhân viên chưa có hợp đồng

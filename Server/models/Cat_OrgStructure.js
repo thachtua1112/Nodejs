@@ -10,12 +10,12 @@ const StructureSchema = mongoose.Schema({
     TypeID : String,
     ParentID : String,
     BranchID : String,
-    OrderNumber : String,
+    OrderNumber : Number,
     Status : String,
     DecisionNo : String,
     OrgStructureTypeID : String,
     TypeDurationID : String,
-    SortID : String,
+    SortID : Number,
     CompanyID : String,
     OrgUnitID : String
 })

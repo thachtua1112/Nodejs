@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 var PositionSchema= new mongoose.Schema({
 ID : String,
 PositionName: String,
-Code: String,
+Code: Number,
 OrgStructureID: String,
 CostCentreID: String,
-DateCreate: String,
-DateUpdate: String,
+DateCreate: Date,
+DateUpdate: Date,
 JobtitleID: String,
 WorkPlaceID: String,
 LaborType: String,
 EmployeeTypeID: String,
-SortID: String,
+SortID: Number,
 HeadPosProfileID: String
 });
 module.exports = mongoose.model( "Cat_Position" , PositionSchema);

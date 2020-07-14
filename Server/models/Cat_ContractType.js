@@ -7,10 +7,10 @@ const ContractTypeSchema = mongoose.Schema({
     UnitTime : String,
     ValueTime : Number,
     ReportMappingID : String,
-    DateCreate : String,
-    DateUpdate : String,
+    DateCreate : Date,
+    DateUpdate : Date,
     ExportID : String,
-    SortID : String,
+    SortID : Number,
     ContractNextID : String
 })
 module.exports = mongoose.model( "Cat_ContractType" , ContractTypeSchema);
